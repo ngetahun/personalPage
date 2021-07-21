@@ -24,37 +24,45 @@ const BlogIndex = ({ data, location }) => {
   }
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <Seo title="All posts" />
       <Bio />
-      <ol style={{ listStyle: `none` }}>
+      <ol style={{ listStyle: `none` }} className="overflow-y-scroll">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
+
+
           return (
             <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
+							<div className="mt-6">
+								<div className="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
+										<div className="flex items-center justify-between">
+											<span className="font-light text-gray-600">{post.frontmatter.date}</span>
+											{/* <a href="#"
+														className="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500">Laravel</a> */}
+										</div>
+										<div className="mt-2">
+											<Link to={post.fields.slug} itemProp="url"
+												className="text-2xl font-bold text-gray-700 hover:underline">
+												{title}
+											</Link>
+
+												<p className="mt-2 text-gray-600"
+													dangerouslySetInnerHTML={{
+														__html: post.frontmatter.description || post.excerpt,
+													}}
+													itemProp="description"
+												/>
+										</div>
+										<div className="flex items-center justify-between mt-4">
+											<Link to={post.fields.slug}
+														className="text-blue-500 hover:underline">
+															Read more
+											</Link>
+										</div>
+								</div>
+							</div>
             </li>
           )
         })}
