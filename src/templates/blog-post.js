@@ -8,58 +8,64 @@ import Seo from "../components/seo"
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
+	const Subtitle = data.site.siteMetadata?.description || `Subtitle`
+	const backgroundImage = post.frontmatter.background
   const { previous, next } = data
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle} subtitle={Subtitle}>
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
+      <div
+        className="flex flex-col w-4/5 justify-items-center justify-center"
       >
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-        </header>
+				<header
+				className="xl:bg-grey-500 lg:bg-grey-700 md:bg-grey-400 sm:bg-grey-600">
+					<div className=" md:flex justify-start py-8 ">
+						<div className="my-auto text-center">
+								<p className="text-grey-100 text-3xl"> { post.frontmatter.title } </p>
+								<p className="text-gray-600 text-sm font-light"> { post.frontmatter.date } </p>
+						</div>
+
+					</div>
+				</header>
+
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
-          itemProp="articleBody"
+          className="flex flex-col justify-content-center"
         />
         <hr />
-        <footer>
-          <Bio />
-        </footer>
-      </article>
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
+      </div>
+			<div className="my-6">
+				<nav className="">
+					<ul
+						style={{
+							display: `flex`,
+							flexWrap: `wrap`,
+							justifyContent: `space-between`,
+							listStyle: `none`,
+							padding: 0,
+						}}
+					>
+						<li className="hover:underline leading-4">
+							{previous && (
+								<Link to={previous.fields.slug} rel="prev">
+									&larr; {previous.frontmatter.title}
+								</Link>
+							)}
+						</li>
+						<li className="hover:underline leading-4">
+							{next && (
+								<Link to={next.fields.slug} rel="next">
+									{next.frontmatter.title} &rarr;
+								</Link>
+							)}
+						</li>
+					</ul>
+				</nav>
+			</div>
     </Layout>
   )
 }
@@ -75,6 +81,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+				description
       }
     }
     markdownRemark(id: { eq: $id }) {

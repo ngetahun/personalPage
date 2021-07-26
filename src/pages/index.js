@@ -8,10 +8,11 @@ import Seo from "../components/seo"
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+	const subtitle = data.site.siteMetadata?.description || `Subtitle`
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={siteTitle}>
+      <Layout location={location} title={siteTitle} subtitle={subtitle}>
         <Seo title="All posts" />
         <Bio />
         <p>
@@ -24,10 +25,9 @@ const BlogIndex = ({ data, location }) => {
   }
 
   return (
-    <Layout title={siteTitle}>
+    <Layout title={siteTitle} subtitle={subtitle}>
       <Seo title="All posts" />
-      <Bio />
-      <ol style={{ listStyle: `none` }} className="overflow-y-scroll">
+      <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
@@ -39,8 +39,6 @@ const BlogIndex = ({ data, location }) => {
 								<div className="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
 										<div className="flex items-center justify-between">
 											<span className="font-light text-gray-600">{post.frontmatter.date}</span>
-											{/* <a href="#"
-														className="px-2 py-1 font-bold text-gray-100 bg-gray-600 rounded hover:bg-gray-500">Laravel</a> */}
 										</div>
 										<div className="mt-2">
 											<Link to={post.fields.slug} itemProp="url"
@@ -78,6 +76,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+				description
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
