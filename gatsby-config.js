@@ -35,7 +35,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 630,
+              maxWidth: 550,
             },
           },
           {
@@ -113,8 +113,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Nate's Blog`,
+        short_name: `Nate's Blog`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
