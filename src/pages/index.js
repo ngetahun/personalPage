@@ -10,20 +10,6 @@ const BlogIndex = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes
 	const subtitle = data.site.siteMetadata?.description || `Subtitle`
 
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle} subtitle={subtitle}>
-        <Seo title="All posts" />
-        <Bio />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
-
   return (
     <Layout title={siteTitle} subtitle={subtitle}>
       <Seo title="All posts" />
