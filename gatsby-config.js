@@ -3,18 +3,18 @@ module.exports = {
     title: `Nate's Blog`,
     author: {
       name: `Natnael Getahun`,
-      summary: `who lives and works in Berlin.`,
+      summary: `Rails webdev | ML enthusiast`,
     },
     description: `A blog on all things web-dev.`,
     siteUrl: `https://ngetahun.me`,
     social: {
       twitter: `babyodainaonsie`,
-			github: `ngetahun`,
-			linkedIn: `https://www.linkedin.com/in/ngetahun`,
+      github: `ngetahun`,
+      linkedIn: `https://www.linkedin.com/in/ngetahun`,
     },
   },
   plugins: [
-		`gatsby-plugin-postcss`,
+    `gatsby-plugin-postcss`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -126,6 +126,20 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-gatsby-cloud`,
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /\.svg$/,
+          options: {
+            props: {
+              className: "h-24 w-24",
+              title: "SVG asset",
+            },
+          },
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
