@@ -31,8 +31,8 @@ const Bio = ({ twitter, github, linkedin, author }) => {
 
   return (
     <div className="max-w-4xl px-10 py-6 mx-auto bg-white">
-      <div className="min-h-screen flex flex-col bg-gray-100">
-        <div className="m-auto">
+      <div className="min-h-full flex flex-col">
+        <div className="mx-auto my-48">
           <div className="flex flex-col bg-gray-200 max-w-sm shadow-md py-8 px-10 md:px-8 rounded-md">
             <div className="flex flex-col md:flex-row gap-6 md:gap-8">
               <div className="rounded-full h-24 w-24 mx-auto">
