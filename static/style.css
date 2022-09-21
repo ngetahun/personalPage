@@ -1,0 +1,78 @@
+body {
+  /* --bodyBkgd: #fbf7f5; */
+  --bodyBkgd: #f0f0f3;
+  --bg: #f8f8ff;
+  --text: #555;
+  --textTitle: #222;
+  --textLink: blue;
+  --hr: hsla(0, 0%, 0%, 0.2);
+  /* --header: #6a728b; */
+  /* --header: #bdc1cf; */
+  --header: #373f57;
+  --link: #1cc6ff;
+  --small: #1cc6ff;
+
+  --textDark: #d9d7e0;
+  --headerDark: var(--textDark);
+  --bgDark: #36313d;
+  --bgLight: white;
+  --linkDark: #8a4baf;
+  --smallDark: grey;
+  --li: var(--text);
+
+  background-color: var(--bodyBkgd);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--header);
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+blockquote {
+  font-style: italic;
+  font-weight: 400;
+  border-left: 4px solid var(--text);
+}
+
+blockquote p {
+  display: inline;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  /* -webkit-box-shadow: 0 0 0 30px white inset !important; */
+  background-color: var(--bodyBkgd) !important;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--text);
+  box-shadow: inset 5px 5px 15px #d5d2d0, inset -5px -5px 15px #ffffff;
+  -webkit-box-shadow: inset 5px 5px 15px #d5d2d0, inset -5px -5px 15px #ffffff;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 34px;
+  }
+}
