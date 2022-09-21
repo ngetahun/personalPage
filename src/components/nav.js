@@ -9,7 +9,7 @@ const Nav = ({ title }) => {
           <ul className="flex flex-row">
             <li className="mx-2">
               <Link to="/">
-                <p className="text-orange-100 border-b-2 border-black text-xl text-center">
+                <p className="text-blue-600 border-b-2 border-black text-xl text-center">
                   {" "}
                   {title}{" "}
                 </p>
@@ -17,7 +17,7 @@ const Nav = ({ title }) => {
             </li>
             <li className="mx-2">
               <Link to="/about">
-                <p className="text-orange-100 border-b-2 border-black text-md text-center">
+                <p className="text-blue-600 border-b-2 border-black text-md text-center">
                   {" "}
                   About{" "}
                 </p>

@@ -4,6 +4,12 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Img from "gatsby-image"
+import styled from "styled-components"
+
+const Image = styled(Img)`
+  box-shadow: -20px 20px 40px #d5d2d0, 20px -20px 40px #ffffff;
+`
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
